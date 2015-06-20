@@ -1,0 +1,55 @@
+html,body {
+  overflow-y:visible;
+}
+
+body {
+  padding-top:15px;
+  background:#151515;
+}
+
+
+input {
+    width:50px;
+    font-size:20pt;
+}
+
+/*
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  webkit-appearance:none;
+  margin:0;
+}
+*/
+
+.mana-section {
+  padding-top:10px;
+  padding-bottom:15px;
+
+}
+
+.mana-section div {
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:15px;
+  display:inline-flex;
+}
+
+.mana-section img {
+  margin-right:5px;
+}
+
+.hitpoints-section {
+  display:flex;
+  align-items:center;
+  align-content:space-between;
+}
+
+.hitpoints-section label {
+  font-size:16pt;
+  padding-right:12px;
+}
+.hitpoints-section input {
+  width:80px;
+  font-size:36pt;
+}

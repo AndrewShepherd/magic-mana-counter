@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="container col-md-3 col-sm-4 col-xs-12" ng-repeat="userViewModel in getAllUsers()">
+        <div class="panel panel-info">
+            <div class="panel-heading clearfix">
+                <button ng-click="userViewModel.delete()" class="pull-right btn btn-danger" ng-hide="userViewModel.isEditingName"><span class="glyphicon glyphicon-remove"></span></button>
+                 <h4 class="panel-title" style="padding-top:7.5px" ng-click="userViewModel.startNameEdit()" ng-hide="userViewModel.isEditingName">
+                  {{ userViewModel.getUserName() }}
+                </h4>
+
+                <div class="input-group" ng-show="userViewModel.isEditingName">
+                    <input 
+                      id="{{ userViewModel.nameEditId }}"
+                      type="text" 
+                      ng-model="userViewModel.userNameForEditing" 
+                      class="form-control"
+                      ng-keyup='($event.keyCode == 13 && userViewModel.applyNameEdit()) || ($event.keyCode==27 && userViewModel.cancelNameEdit())' /> 
+                    <span class="input-group-btn">
+                      <button ng-click='userViewModel.applyNameEdit()' class='btn btn-success'>
+                          <span class="glyphicon glyphicon-ok"></span>
+                      </button>
+                      <button ng-click='userViewModel.cancelNameEdit()' class='btn btn-warning'>
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </button>
+                    </span> 
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="hitpoints-section">
+                <label for="{{ userViewModel.getHitPointsInputId() }}">Hit points</label>
+                <input type="number" id="{{ userViewModel.getHitPointsInputId() }}" ng-model="userViewModel.user.hitPoints" />
+                </div>
+                <div class="mana-section">
+                  <div ng-repeat="manaItem in userViewModel.user.mana">
+                    <image src='{{ "./images/" + manaItem.imageName }}' style="max-width:50px;max-height:50px" />
+                    <input type="number" ng-model="manaItem.amount" />
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-3 col-sm-4 col-xs-12">
+        <button ng-click='startAddUser()' ng-show='displayAddUserButton()' class="btn btn-default">
+          Add Player
+        </button>
+        <div ng-show='displayAddUserEditPanel()'>
+            <div class="input-group">
+                <input id="inputNewUserName" type="text" ng-keypress="" ng-model="newUserName" ng-keyup="($event.keyCode == 13 && applyAddUser()) || ($event.keyCode == 27 && cancelAddUser())" class="form-control" /> 
+                <span class="input-group-btn">
+                  <button ng-click='applyAddUser()' class='btn btn-success'>
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </button>
+                  <button ng-click='cancelAddUser()' class='btn btn-warning'>
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
