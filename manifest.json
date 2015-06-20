@@ -6,6 +6,6 @@
   },
   "manifest_version": 2,
   "version": "1.0.0.0",
-  "name":"Magic Mana Counter"
+  "name":"Magic Mana Counter",
   "description": "Helps you keep track of hitpoints and mana during a Magic the Gathering card game"
 }
